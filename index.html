@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- CDN   -->
+    <!--    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11" type="text/javascript"></script>-->
+
+    <!-- local importing vue，development version   -->
+    <script src="src/vue.js" type="text/javascript"></script>
+    <meta charset="UTF-8">
+    <title>VueEasyPractice</title>
+</head>
+<body>
+    <div id="app">
+        <!-- template syntax {{key}} -->
+        <h1 v-once>Hello {{name}}</h1>
+        <!-- v-bind:attrName=key -->
+        <!-- 因為是array['one','two']，因此會變成class="one two" -->
+        <p :class="classes"></p>
+        <!-- two-way data binding，輸入內容與data連動，好像只看到應用在輸入元素的配合上 -->
+        <input type="text" v-model="name"><br><br>
+        <!-- 一次會影響到兩個，上面的input內容以及顯示的{{}}，因為二者綁定
+             這很適合做一些互動顯示，這是按鍵按下去放開，就觸發事件，@為監聽事件
+        -->
+        <input type="text" @keyup="updateName"><br><br>
+        <input type="text" @input="changeName"><br>
+        <p>{{ greeting() }}</p>
+        <a :href="link">Google search engine link <br>
+        <a :href="returnGoogleLink()">Google search engine link by vue method</a>
+
+         <!--            -->
+         <p v-html="atag"></p>
+    </div>
+    <!-- 網頁讀取後才讀取vue component，這部分可以用hook來控制-->
+    <script src="app.js" type="text/javascript"></script>
+</body>
+</html>
